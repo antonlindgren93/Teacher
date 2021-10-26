@@ -3,9 +3,11 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import TeacherCard from "../components/Layout/TeacherCard";
 import CategoryBannner from "../components/Layout/CategoryBanner";
+import HeroSection from "../components/Layout/HeroSection";
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div>
+      <HeroSection />
       <CategoryBannner
         categoryTitle="Most Popular"
         cards={[
