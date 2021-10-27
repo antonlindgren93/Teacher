@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Typical from "react-typical";
 import { BsChevronDoubleDown, BsChevronCompactDown } from "react-icons/bs";
 
+
 const HeroSection = () => {
   const videoRef = useRef();
 
