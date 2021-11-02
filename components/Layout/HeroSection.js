@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Typical from "react-typical";
 import { BsChevronDoubleDown, BsChevronCompactDown } from "react-icons/bs";
+import SignInBtn from "./SignInBtn";
 
 const HeroSection = () => {
   const videoRef = useRef();
@@ -54,6 +55,7 @@ const HeroSection = () => {
         </HeroH1>
 
         <HeroP>Pick up a new skill today</HeroP>
+        <SignInBtn />
       </HeroContent>
       <ArrowBtnContainer>
         <ArrowBtn onClick={scrollToBottom}>
@@ -120,9 +122,7 @@ const HeroP = styled.p`
   //text-shadow: 0 0 2px #fff;
 `;
 
-const SignInBtn = styled.button`
-  color: #fff;
-`;
+
 
 const ArrowBtnContainer = styled.div`
   align-items: center;
