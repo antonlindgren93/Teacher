@@ -4,6 +4,7 @@ import styles from "../styles/Home.module.css";
 import TeacherCard from "../components/Layout/TeacherCard";
 import CategoryBannner from "../components/Layout/CategoryBanner";
 import HeroSection from "../components/Layout/HeroSection";
+import Footer from "../components/Layout/Footer";
 export default function Home() {
   return (
     <div>
@@ -39,6 +40,8 @@ export default function Home() {
           />,
         ]}
       />
+
+      <Footer />
 
       <footer className={styles.footer}>
         <a

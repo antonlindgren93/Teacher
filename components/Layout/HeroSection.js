@@ -4,6 +4,7 @@ import Typical from "react-typical";
 import { BsChevronDoubleDown, BsChevronCompactDown } from "react-icons/bs";
 import SignInBtn from "./SignInBtn";
 
+
 const HeroSection = () => {
   const videoRef = useRef();
 

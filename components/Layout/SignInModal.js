@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { FaFacebookSquare, FaGoogle } from "react-icons/fa";
 
-
 const SignInModal = ({ open, children, onClose }) => {
   if (!open) return null;
   const [signInToggle, setSignInToggle] = useState(true);
@@ -11,6 +10,14 @@ const SignInModal = ({ open, children, onClose }) => {
 
   const toggleSwitch = () => setSignInToggle(!signInToggle);
   //const toggleLoginSwitch = () => setShowSignIn((prev) => !prev);
+
+  const facebookSignIn = () => {
+    alert("singed in with Facebook");
+  };
+
+  const googleSingIn = () => {
+    alert("signed in with Google");
+  };
 
   return (
     <>
@@ -39,8 +46,8 @@ const SignInModal = ({ open, children, onClose }) => {
               Sign in
             </ModalSignInBtn>
             <SocialMediaIcons>
-              <FaFacebookSquare size={24} />
-              <FaGoogle size={24} />
+              <FaFacebookSquare size={24} onClick={facebookSignIn} />
+              <FaGoogle size={24} onClick={googleSingIn} />
             </SocialMediaIcons>
           </ModalContent>
 
@@ -90,9 +97,9 @@ const Modal = styled(motion.div)`
 `;
 
 const H1 = styled.h1`
-font-size: 20px;
-margin-bottom: 10%;
-`
+  font-size: 20px;
+  margin-bottom: 10%;
+`;
 const EmainInput = styled.input`
   margin-bottom: 20px;
   border-radius: 5px;
