@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { FaFacebookSquare, FaGoogle } from "react-icons/fa";
+import { authentication } from "./Firebase/firebaseConfig";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import Link from "next/link";
 
 const SignInModal = ({ open, children, onClose }) => {
   if (!open) return null;
@@ -11,12 +15,27 @@ const SignInModal = ({ open, children, onClose }) => {
   const toggleSwitch = () => setSignInToggle(!signInToggle);
   //const toggleLoginSwitch = () => setShowSignIn((prev) => !prev);
 
-  const facebookSignIn = () => {
-    alert("singed in with Facebook");
+  const router = useRouter();
+
+  const facebookSignIn = (e) => {
+    alert("sing in with facebook will be added..");
+    e.preventDefault();
+    router.push("/explore");
   };
 
   const googleSingIn = () => {
-    alert("signed in with Google");
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(authentication, provider)
+      .then((result) => {
+        const userToken = result.user.accessToken;
+        if (userToken) {
+        }
+        console.log(userToken);
+        //console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (

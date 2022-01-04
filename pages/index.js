@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
@@ -5,7 +6,11 @@ import TeacherCard from "../components/Layout/TeacherCard";
 import CategoryBannner from "../components/Layout/CategoryBanner";
 import HeroSection from "../components/Layout/HeroSection";
 import Footer from "../components/Layout/Footer";
+import Link from "next/link";
+
 export default function Home() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
     <div>
       <HeroSection />
