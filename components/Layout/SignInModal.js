@@ -6,6 +6,7 @@ import { FaFacebookSquare, FaGoogle } from "react-icons/fa";
 import { authentication } from "./Firebase/firebaseConfig";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import Link from "next/link";
+import { doc, setDoc } from "firebase/firestore";
 
 const SignInModal = ({ open, children, onClose }) => {
   if (!open) return null;
@@ -23,14 +24,19 @@ const SignInModal = ({ open, children, onClose }) => {
     router.push("/explore");
   };
 
-  const googleSingIn = () => {
+  const googleSingIn = (e) => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(authentication, provider)
       .then((result) => {
+        console.log(result.user.displayName);
+        const userDisplayName = result.user.displayName;
         const userToken = result.user.accessToken;
         if (userToken) {
+          e.preventDefault();
+          router.push("/explore");
+        } else {
+          console.log("No userID found");
         }
-        console.log(userToken);
         //console.log(result);
       })
       .catch((error) => {
