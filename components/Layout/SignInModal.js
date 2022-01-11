@@ -3,20 +3,31 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { FaFacebookSquare, FaGoogle } from "react-icons/fa";
-import { authentication } from "./Firebase/firebaseConfig";
+import { auth } from "./Firebase/firebase";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import Link from "next/link";
 import { doc, setDoc } from "firebase/firestore";
+//import Modal from "@mui/material/Modal";
 
 const SignInModal = ({ open, children, onClose }) => {
   if (!open) return null;
   const [signInToggle, setSignInToggle] = useState(true);
-  const [showSignIn, setShowSignIn] = useState(true);
+  const [user, setUser] = useState(null);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const [password, setPassword] = useState("");
 
   const toggleSwitch = () => setSignInToggle(!signInToggle);
   //const toggleLoginSwitch = () => setShowSignIn((prev) => !prev);
 
   const router = useRouter();
+
+  const handleSignUp = () => {};
+
+  const handleSignIn = () => {};
 
   const facebookSignIn = (e) => {
     alert("sing in with facebook will be added..");
@@ -26,9 +37,9 @@ const SignInModal = ({ open, children, onClose }) => {
 
   const googleSingIn = (e) => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(authentication, provider)
+    signInWithPopup(auth, provider)
       .then((result) => {
-        console.log(result.user.displayName);
+        console.log("The display name is: " + result.user.displayName);
         const userDisplayName = result.user.displayName;
         const userToken = result.user.accessToken;
         if (userToken) {
@@ -62,8 +73,18 @@ const SignInModal = ({ open, children, onClose }) => {
 
           <ModalContent>
             <H1>Login</H1>
-            <EmainInput placeholder="Email" type="text" />
-            <EmainInput placeholder="Password" type="password" />
+            <EmainInput
+              placeholder="Email"
+              type="text"
+              value={email}
+              onChange={(e) => setLoginEmail(e.target.value)}
+            />
+            <EmainInput
+              placeholder="Password"
+              type="password"
+              value={password}
+              onChange={(e) => setLoginPassword(e.target.value)}
+            />
             <ModalSignInBtn
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -78,11 +99,32 @@ const SignInModal = ({ open, children, onClose }) => {
 
           <ModalSignUpSide>
             <H1>Create account</H1>
-            <EmainInput placeholder="First name" type="text" />
-            <EmainInput placeholder="Last name" type="text" />
-            <EmainInput placeholder="Email" type="text" />
-            <EmainInput placeholder="Password" type="password" />
+            <p>First name</p>
+            <EmainInput
+              type="text"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+            <p>Last name</p>
+            <EmainInput
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+            <p>Email</p>
+            <EmainInput
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <p>Password</p>
+            <EmainInput
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
             <ModalSignUpBtn
+              onClick={handleSignUp}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
@@ -110,7 +152,7 @@ const Modal = styled(motion.div)`
   width: 800px;
   height: 500px;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
-  background-color: #514644;
+  background-color: #232c30;
   color: #514644;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -137,7 +179,7 @@ const ModalSignUpSide = styled.div`
   justify-content: center;
   align-items: center;
   line-height: 1.8rem;
-  background: #efc8b1;
+  background: #ece9e6;
   border-radius: 10px;
 `;
 const ModalContent = styled.div`
@@ -146,14 +188,14 @@ const ModalContent = styled.div`
   justify-content: center;
   align-items: center;
   line-height: 1.8rem;
-  color: #efc8b1;
+  color: #ece9e6;
 
   p {
     margin-bottom: 1rem;
   }
 
   button {
-    background: #efc8b1;
+    background: #ece9e6;
     color: #514644;
     border: none;
   }
@@ -179,13 +221,13 @@ const ModalSignInBtn = styled(motion.button)`
 `;
 
 const ModalSignUpBtn = styled(motion.button)`
-  background: #514644;
+  background: #232c30;
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
   border: 2px;
   border-radius: 3px;
-  color: #efc8b1;
+  color: #fff;
 `;
 
 const SocialMediaIcons = styled.div`

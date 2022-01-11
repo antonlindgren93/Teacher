@@ -3,6 +3,7 @@ import { getAuth } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 
+//Production
 const firebaseConfig = {
   apiKey: "AIzaSyDshXXn0dOnrkXv_FN26-SxHhEoTNVGH7Q",
   authDomain: "techu-83d53.firebaseapp.com",
@@ -13,15 +14,15 @@ const firebaseConfig = {
   measurementId: "G-RRCS8R086W",
 };
 
-const app = initializeApp(firebaseConfig);
-//const analytics = getAnalytics(app);
+//Development
+// const firebaseConfig = {
+//   apiKey: "AIzaSyC3e_KMg1ig8EkB5rqAz3dvfN3uaZVSBNI",
+//   authDomain: "teachu-development.firebaseapp.com",
+//   projectId: "teachu-development",
+//   storageBucket: "teachu-development.appspot.com",
+//   messagingSenderId: "99658910033",
+//   appId: "1:99658910033:web:e1d60c17d175ecc430eb70"
+// };
 
-const db = getFirestore();
+export default firebaseConfig
 
-const collectionRef = collection(db, "users");
-
-getDocs(collectionRef).then((snapshot) => {
-  console.log(snapshot.doc);
-});
-
-export const authentication = getAuth(app);

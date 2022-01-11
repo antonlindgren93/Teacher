@@ -21,7 +21,7 @@ const Footer = () => {
   return (
     <FooterContainer>
       <FooterWrap>
-        <FooterImage src="/school.png" />
+        {/* <FooterImage src="/school.png" /> */}
         <FooterLinksContainer>
           <FooterLinksWrapper>
             <FooterLinkItems>

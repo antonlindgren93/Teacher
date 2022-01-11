@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Typical from "react-typical";
 import { BsChevronDoubleDown, BsChevronCompactDown } from "react-icons/bs";
 import SignInBtn from "./SignInBtn";
-
+import ExploreBtn from "../ExploreBtn";
 
 const HeroSection = () => {
   const videoRef = useRef();
@@ -37,17 +37,17 @@ const HeroSection = () => {
                 loop={Infinity}
                 wrapper="b"
                 steps={[
-                  "code",
+                  "code.",
                   3000,
-                  "play piano",
+                  "play piano.",
                   3000,
-                  "speak spanish",
+                  "speak spanish.",
                   3000,
-                  "paint",
+                  "paint.",
                   3000,
-                  "edit videos",
+                  "edit videos.",
                   3000,
-                  "play chess",
+                  "play chess.",
                   3000,
                 ]}
               />
@@ -56,7 +56,8 @@ const HeroSection = () => {
         </HeroH1>
 
         <HeroP>Pick up a new skill today</HeroP>
-        <SignInBtn />
+        {/* <SignInBtn /> */}
+        <ExploreBtn />
       </HeroContent>
       <ArrowBtnContainer>
         <ArrowBtn onClick={scrollToBottom}>
@@ -94,7 +95,7 @@ const VideoBg = styled.video`
   -o-object-fit: cover;
   object-fit: cover;
   background: #232a34;
-  z-index: 2;
+  z-index: 1;
 `;
 const HeroContent = styled.div`
   z-index: 3;
@@ -122,8 +123,6 @@ const HeroP = styled.p`
 
   //text-shadow: 0 0 2px #fff;
 `;
-
-
 
 const ArrowBtnContainer = styled.div`
   align-items: center;

@@ -21,9 +21,8 @@ const SignInButton = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={openModal}
-        
       >
-        Sign in
+       (Old) Sign in
       </SignInBtn>
       <SignInModal open={isModalOpen} onClose={closeModal}></SignInModal>
     </>
@@ -33,11 +32,11 @@ const SignInButton = () => {
 const SignInBtn = styled(motion.button)`
   color: #514644;
   font-size: 1em;
-  margin: 1em;
+
   padding: 0.25em 1em;
   border: 2px;
   border-radius: 3px;
-  background-color: #efc8b1;
+  background-color: #50aba5;
   cursor: pointer;
 
   /* &:hover {
